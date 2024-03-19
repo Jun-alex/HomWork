@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    const yearOfBirth = prompt("Enter your year of birth:");
+    const cityUser = prompt("Enter your city residence:");
+    const favoriteSportUser = prompt("Enter your favorite sport:");
+
+    const currentYear = new Date().getFullYear();
+    const yearUser = currentYear - yearOfBirth;
+
+    let cityMassage;
+    if (cityUser === "Київ" || cityUser === "Вашингтон" || cityUser === "Лондон") {
+        cityMassage = `Ти живеш у столиці ${getCountry(cityUser)}.`;
+    } else {
+        cityMassage = `Ти живеш у місті ${cityUser}.`;
+    }
+
+    function getCountry(cityUser) {
+        switch (cityUser) {
+            case "Київ":
+                return "України";
+            case "Вашингтон":
+                return "US";
+            case "Лондон":
+                return "Великобританії";
+            default:
+                return "невідомої країни"
+        }
+    }
+
+    alert(`Твой возраст ${yearUser}, ${cityMassage}, твой любимый спорт ${favoriteSportUser}.`);
+</script>
+</body>
+</html>
