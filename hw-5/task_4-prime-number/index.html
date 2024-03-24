@@ -11,10 +11,21 @@
 <script>
     let primeNumber = +prompt("Enter your number:");
 
-    if (primeNumber % 2 === 0) {
-        alert(`${primeNumber} - простое число`);
-    } else {
-        alert(`${primeNumber} - не простое число`);
+    if (primeNumber > 1) {
+        let prime = true;
+
+        for (let i = 2; i <= Math.sqrt(primeNumber); i++) {
+            if (primeNumber % i === 0) {
+                prime = false;
+                break;
+            }
+        }
+
+        if (prime) {
+            alert(`${primeNumber} - простое число`);
+        } else {
+            alert(`${primeNumber} - не простое число`);
+        }
     }
 
 </script>
