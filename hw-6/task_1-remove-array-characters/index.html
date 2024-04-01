@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    function removeCharacters(string, charsRemove) {
+        let result = "";
+
+        for (let i = 0; i < string.length; i++) {
+            if (!charsRemove.includes(string[i])) {
+                result += string[i];
+            }
+        }
+        return result;
+    }
+
+    let enterString = "hello world";
+    let charsRemove = ['l', 'd'];
+
+    // let enterString = "Marten Furckad";
+    // let charsRemove = ['k', 'a'];
+
+    const result = removeCharacters(enterString, charsRemove);
+
+    console.log(result)
+
+
+</script>
+
+</body>
+</html>

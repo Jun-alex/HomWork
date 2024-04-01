@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    function arithmeticNumber(array) {
+        let count = 0;
+        let sum = 0;
+
+        array.forEach(element => {
+            if (typeof element === "number" && !isNaN(element)) {
+                sum += element;
+
+                count++;
+            }
+        });
+
+        if (count === 0) {
+            alert("У масиві немає числових елементів.");
+        } else {
+            let average = sum / count;
+            return average;
+        }
+    }
+
+    // const array = [11, 23, "string", "cat", 75, 56];
+    const array = [21, 49, "string", 4, 15, 34];
+
+    console.log(arithmeticNumber(array))
+</script>
+
+</body>
+</html>
