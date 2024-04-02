@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    function functionWithCycle() {
+        for (let i = 0; i < 10; i++) {
+            let enterNumberUser = +prompt(`Enter your number greater than 100. Iteration ${i + 1}`);
+
+            if (enterNumberUser > 100) {
+                console.log(`Последьнее введённое число: ${enterNumberUser}`);
+                return;
+            } else {
+                alert("Введённое число меньше или равно 100. Пожалуйста введите число ещё раз")
+            }
+        }
+        alert("Достигнуто максимальное количество итераций.")
+    }
+
+    functionWithCycle()
+</script>
+
+</body>
+</html>
