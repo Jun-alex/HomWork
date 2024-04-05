@@ -12,13 +12,16 @@
 <script>
     function functionWithCycle() {
         for (let i = 0; i < 10; i++) {
-            let enterNumberUser = +prompt(`Enter your number greater than 100. Iteration ${i + 1}`);
+            let enterNumberUser = prompt(`Enter your number greater than 100. Iteration ${i + 1}`);
 
-            if (enterNumberUser > 100) {
+            if (isNaN(enterNumberUser)) {
+                console.log(`Вы ввели не число. Последнее введённое значение: ${enterNumberUser}`);
+                return;
+            } else if (enterNumberUser > 100) {
                 console.log(`Последьнее введённое число: ${enterNumberUser}`);
                 return;
             } else {
-                alert("Введённое число меньше или равно 100. Пожалуйста введите число ещё раз")
+                alert("Введённое число меньше 100. Пожалуйста введите число ещё раз.")
             }
         }
         alert("Достигнуто максимальное количество итераций.")
