@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    let company = {
+        sales: [{name: "John", salary: 1000}, {name: "Alice", salary: 600}],
+        development: {
+            web: [{name: "Peter", salary: 2000}, {name: "Alex", salary: 1800}],
+            internals: [{name: "Jack", salary: 1300}]
+        }
+        // lid: [{name: "Bogdan", salary: 3000}, {name: "Paul", salary: 2300}]
+    };
+
+    function totalSalaryAll(department) {
+        let total = 0;
+
+        if (Array.isArray(department)) {
+            department.forEach(worker => {
+                total += worker.salary;
+            });
+        } else {
+            Object.values(department).forEach(subDivision => {
+                total += totalSalaryAll(subDivision);
+            });
+        }
+
+        return total;
+    }
+
+    let totalAllSalary = totalSalaryAll(company);
+    console.log(`Cума зарплат работников: ${totalAllSalary}`)
+</script>
+
+</body>
+</html>
