@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="blockPifagorTable"></div>
+
+<script>
+
+    const rows = 10;
+    const columns = 10;
+
+    function pifagorTable(rows, columns) {
+        let table = '<table border="2">';
+
+        for (let row = 1; row <= rows; row++) {
+            table += '<tr>';
+
+            for (let colum = 1; colum <= columns; colum++) {
+                table += `<td> ${row * colum} </td>`;
+            }
+            table += '</tr>';
+        }
+
+        table += '</table>';
+
+        return table;
+    }
+
+    document.getElementById("blockPifagorTable").innerHTML = pifagorTable(rows, columns);
+</script>
+
+</body>
+</html>

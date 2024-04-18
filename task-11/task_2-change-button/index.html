@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+<div id="textContent">
+    Самый простой способ найти интересующую вас информацию — это строка поиска, которая присутствует
+    на каждой странице в верхней части. Введите в поле то, что Вы ищете,
+    и частичные совпадения появятся в выпадающем списке.
+</div>
+
+<button id="changeBtn">Изменить цвет</button>
+
+<script>
+    const textChangeColor = document.getElementById("textContent");
+    const btnChangeColor = document.getElementById("changeBtn");
+
+    let colorText = "black";
+    let colorBtn = "green";
+
+    function changeColor() {
+        if (colorText === "black" && colorBtn === "green") {
+            textChangeColor.style.color = "blue";
+            colorText = "blue";
+
+            btnChangeColor.style.backgroundColor = "aqua";
+            colorBtn = "aqua";
+
+        } else {
+            textChangeColor.style.color = "black";
+            colorText = "black";
+
+            btnChangeColor.style.backgroundColor = "green";
+            colorBtn = "green";
+        }
+    }
+
+    btnChangeColor.addEventListener("click", changeColor);
+</script>
+</body>
+</html>

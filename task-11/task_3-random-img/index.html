@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+
+<img alt="Img Random" class="random__img" src="">
+
+<script>
+    const arrayImg = [
+        "./img/1.jpg",
+        "./img/2.jpg",
+        "./img/3.jpg",
+        "./img/4.jpg",
+        "./img/5.webp",
+        "./img/6.jpg",
+        "./img/7.jpg",
+        "./img/8.jpg",
+        "./img/9.jpg",
+        "./img/10.jpg"
+    ];
+
+    const randomImg = document.querySelector(".random__img");
+    const indexRandomImg = Math.floor(Math.random() * arrayImg.length);
+
+    randomImg.src = arrayImg[indexRandomImg];
+
+</script>
+
+</body>
+</html>
