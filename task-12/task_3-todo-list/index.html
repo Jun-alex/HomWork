@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+
+<h2>Список задач</h2>
+
+<ul id="taskList"></ul>
+
+<input id="taskInput" placeholder="Введите название задачи" type="text">
+<button id="addTask">Добавить</button>
+
+
+<script>
+
+    const taskList = document.getElementById("taskList");
+    const taskInput = document.getElementById("taskInput");
+    const addTask = document.getElementById("addTask");
+
+    addTask.addEventListener("click", () => {
+        let taskText = taskInput.value.trim();
+
+        if (taskText !== "") {
+            const newTask = document.createElement("li");
+            newTask.textContent = taskText;
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Удалить";
+            newTask.appendChild(deleteBtn);
+
+            taskList.appendChild(newTask);
+
+            taskInput.value = ""
+        }
+    });
+
+    taskList.addEventListener("click", (event) => {
+        if (event.target.tagName === "BUTTON") {
+            event.target.parentNode.remove();
+        }
+    });
+
+</script>
+
+
+</body>
+</html>

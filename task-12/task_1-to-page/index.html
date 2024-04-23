@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+
+<button id="enter-link">Введите ссылку</button>
+<button id="redirect">Перевести на страницу ссылки</button>
+
+<script>
+    function redirectPage(action) {
+        if (action === "enter link") {
+            let link = prompt("Введите ссылку:");
+
+            if (link) {
+                localStorage.setItem("saveLink", link)
+            }
+        } else if (action === "redirect") {
+            let redirectPage =  localStorage.getItem("saveLink");
+
+            if (redirectPage) {
+                window.location.href = redirectPage;
+            } else {
+                alert("Нужно ввести ссылку.")
+            }
+        }
+    }
+
+    document.getElementById("enter-link").addEventListener("click", redirectHandler);
+    document.getElementById("redirect").addEventListener("click", redirectHandler);
+
+    function redirectHandler(event) {
+        const action = event.target.id === "enter-link" ? "enter link" : "redirect";
+        redirectPage(action);
+    }
+
+</script>
+
+</body>
+</html>
