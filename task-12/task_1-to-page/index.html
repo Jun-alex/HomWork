@@ -13,32 +13,24 @@
 <button id="redirect">Перевести на страницу ссылки</button>
 
 <script>
-    function redirectPage(action) {
-        if (action === "enter link") {
-            let link = prompt("Введите ссылку:");
+    (function () {
+        let link;
 
+        function enterLink() {
+            link = prompt("Введите ссылку:");
+        }
+
+        function redirectToLink() {
             if (link) {
-                localStorage.setItem("saveLink", link)
-            }
-        } else if (action === "redirect") {
-            let redirectPage =  localStorage.getItem("saveLink");
-
-            if (redirectPage) {
-                window.location.href = redirectPage;
+                window.location.href = link;
             } else {
-                alert("Нужно ввести ссылку.")
+                alert("Сначала введите ссылку!");
             }
         }
-    }
 
-    document.getElementById("enter-link").addEventListener("click", redirectHandler);
-    document.getElementById("redirect").addEventListener("click", redirectHandler);
-
-    function redirectHandler(event) {
-        const action = event.target.id === "enter-link" ? "enter link" : "redirect";
-        redirectPage(action);
-    }
-
+        document.getElementById("enter-link").addEventListener("click", enterLink);
+        document.getElementById("redirect").addEventListener("click", redirectToLink);
+    })();
 </script>
 
 </body>
