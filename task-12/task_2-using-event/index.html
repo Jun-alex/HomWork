@@ -22,7 +22,7 @@
     blockButton.addEventListener("click", (event) => {
 
         if (event.target.tagName === "BUTTON") {
-            let idButton = event.target.id;
+            let idButton = event.target.innerText;
 
             alert(`Клик произошол на кнопку: ${idButton}`);
         }
