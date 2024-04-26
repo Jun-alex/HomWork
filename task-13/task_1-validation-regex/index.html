@@ -34,6 +34,7 @@
 </form>
 
 <script>
+
     const form = document.getElementById("myForm");
     const nameInput = document.getElementById("name");
     const messageInput = document.getElementById("message");
@@ -41,50 +42,68 @@
     const emailInput = document.getElementById("email");
 
     function clearErrorInputs() {
-        document.getElementById('nameError').innerText = '';
-        document.getElementById('messageError').innerText = '';
-        document.getElementById('phoneError').innerText = '';
-        document.getElementById('emailError').innerText = '';
+        document.getElementById("nameError").innerText = "";
+        document.getElementById("messageError").innerText = "";
+        document.getElementById("phoneError").innerText = "";
+        document.getElementById("emailError").innerText = "";
     }
 
+    function clearFormInputs() {
+        nameInput.value = "";
+        messageInput.value = "";
+        phoneInput.value = "";
+        emailInput.value = "";
+    }
+
+    function validateInput(inputValue, regex, errorMessage) {
+        if (!regex.test(inputValue.trim())) {
+            return errorMessage;
+        }
+        return "";
+    }
 
     form.addEventListener("submit", function (event) {
+        clearErrorInputs();
         let formIsValid = true;
 
-        clearErrorInputs();
+        const errors = {
+            name: validateInput(nameInput.value,
+                /^[a-zA-Z-]{1,50}$/,
+                "Invalid name"),
 
-        if (!/^[a-zA-Z-]+$/.test(nameInput.value.trim())) {
-            document.getElementById("nameError").innerText = "Invalid name";
-            formIsValid = false;
-        }
+            message: validateInput(messageInput.value,
+                /^.{5,500}$/,
+                "Message must be between 5 and 500 characters long"),
 
-        if (!/^.{5,500}$/.test(messageInput.value.trim())) {
-            document.getElementById("messageError").innerText =
-                "Message must be between 5 and 500 characters long";
-            formIsValid = false;
-        }
+            phone: validateInput(phoneInput.value,
+                /^\+380\d{9}$/,
+                "Invalid phone number (must start with +380)"),
 
-        if (!(/^\+380\d{9}$/.test(phoneInput.value.trim()))) {
-            document.getElementById("phoneError").innerText =
-                'Invalid phone number (must start with +380)';
-            formIsValid = false;
-        }
+            email: validateInput(emailInput.value,
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                "Invalid email address")
+        };
 
-        if (!(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim()))) {
-            document.getElementById("emailError").innerText = 'Invalid email address';
-            formIsValid = false;
+        for (const field in errors) {
+            if (errors[field]) {
+                document.getElementById(field + "Error").innerText = errors[field];
+                formIsValid = false;
+            }
         }
 
         if (!formIsValid) {
             event.preventDefault();
+            alert("Заполните все поля формы!");
         } else {
-            console.log(`Name: ${nameInput.value}, Message: ${messageInput.value},
-                         Phone number: ${phoneInput.value}, Email: ${emailInput.value}`);
+            console.log(`
+            Имя: ${nameInput.value},
+            Сообщение: ${messageInput.value},
+            Номер телефона: ${phoneInput.value},
+            Электронная почта: ${emailInput.value}`);
 
+            clearFormInputs();
             event.preventDefault();
-            setTimeout(() => { form.submit() }, 9000);
         }
-
     });
 
 </script>
