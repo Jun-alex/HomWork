@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+
+
+<script>
+    "use strict";
+
+    const NUM_LESSONS = 25;
+
+    class Student {
+        constructor(firstName, lastName, birthYear) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.birthYear = birthYear;
+
+            this.estimates = [];
+            this.traffic = new Array(NUM_LESSONS).fill(undefined);
+        }
+
+        getAge = () => {
+            const currentAge = new Date().getFullYear();
+            return currentAge - this.birthYear;
+        }
+
+        addEstimate = estimate => this.estimates.push(estimate);
+
+        present = () => this.updateAttendance(true);
+
+        absent = () => this.updateAttendance(false);
+
+        updateAttendance(isPresent) {
+            if (this.traffic.filter(Boolean).length < NUM_LESSONS) {
+                this.traffic.push(isPresent);
+            } else {
+                alert("Массив посещаемости уже заполнен!")
+            }
+        }
+
+        averagePoint = () => {
+            if (this.estimates.length === 0) {
+                return 0;
+            }
+
+            const resultAveragePoint = this.estimates.reduce((total, grade) => total + grade, 0);
+            return resultAveragePoint / this.estimates.length;
+        }
+
+        percentageAttendance = () => {
+            return this.traffic.filter(Boolean).length / NUM_LESSONS;
+        }
+
+        summary = () => {
+            const averageScore = this.averagePoint();
+            const averageAttendance = this.percentageAttendance();
+
+            if (averageScore > 90 && averageAttendance > 0.9) {
+                return "Молодець!";
+            } else if (averageScore > 50 || averageAttendance > 0.5) {
+                return "Добре, але можна краще!";
+            } else {
+                return "Редиска!";
+            }
+        }
+    }
+
+
+    const firstStudent = new Student("Сергій", "Любимов", 1991);
+    firstStudent.addEstimate(95);
+    firstStudent.addEstimate(100);
+    firstStudent.addEstimate(100);
+
+    for (let i = 0; i < NUM_LESSONS; i++) {
+        firstStudent.present();
+    }
+
+    console.log(`Сергій Любимов: - ${firstStudent.summary()}`);
+
+    const studentSecond = new Student("Марина", "Мирина", 1876);
+    studentSecond.addEstimate(70);
+    studentSecond.addEstimate(75);
+    studentSecond.addEstimate(80);
+
+    studentSecond.present();
+
+    console.log(`Марина Мирина: - ${studentSecond.summary()}`);
+
+
+    const studentThird = new Student("Виктор", "Смирнов", 1876);
+    studentThird.addEstimate(40);
+    studentThird.addEstimate(45);
+    studentThird.addEstimate(30);
+
+    studentThird.present();
+    studentThird.present();
+
+    console.log(`Виктор Смирнов: - ${studentThird.summary()}`);
+
+</script>
+
+</body>
+</html>
