@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    class Calculator {
+        add = (a, b) => a + b;
+        subtract = (a, b) => a - b;
+        multiply = (a, b) => a * b;
+        divide = (a, b) => a / b;
+    }
+
+    const calculator = new Calculator();
+
+    alert(`Результат добавления: ${calculator.add(5, 3)}`);
+    alert(`Результат отнимания: ${calculator.subtract(10, 4)}`);
+    alert(`Результат умножения: ${calculator.multiply(3, 6)}`);
+    alert(`Результат деления: ${calculator.divide(8, 2)}`);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    class Coach {
+        constructor(name, specialization, rating) {
+            this.name = name;
+            this.specialization = specialization;
+            this.rating = rating;
+        }
+
+        displayInfo() {
+            return `Coach: ${this.name}, specialization: ${this.specialization}, rating: ${this.rating}`;
+        }
+    }
+
+    const coach1 = new Coach('John Doe', 'Fitness', 4.7);
+    const coach2 = new Coach('Alice Smith', 'Yoga', 4.9);
+
+    alert(`${coach1.displayInfo()}`);
+    alert(`${coach2.displayInfo()}`);
+</script>
+
+</body>
+</html>
