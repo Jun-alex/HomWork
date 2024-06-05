@@ -1,0 +1,60 @@
+@import "_variables.scss";
+
+.slider-container {
+  position: relative;
+  max-width: $max-width;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .slider {
+    display: flex;
+    overflow-x: hidden;
+    width: $slider-width;
+
+    .img__slider {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  .prev,
+  .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: $button-bg-color;
+    color: white;
+    border: none;
+    padding: $button-padding;
+    cursor: pointer;
+
+    &.prev {
+      left: 0;
+    }
+
+    &.next {
+      right: 0;
+    }
+  }
+
+  .dots-container {
+    text-align: center;
+    margin-top: 10px;
+
+    .dot {
+      display: inline-block;
+      width: $dot-size;
+      height: $dot-size;
+      background-color: $dot-color;
+      border-radius: 50%;
+      margin: 0 $dot-margin;
+      cursor: pointer;
+
+      &.active {
+        background-color: $dot-active-color;
+      }
+    }
+  }
+}
