@@ -1,0 +1,38 @@
+.container {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+    margin-top: 50px;
+}
+
+.title {
+    background-color: aqua;
+    padding: 15px 25px;
+}
+
+.smile-list {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.smile-item {
+    cursor: pointer;
+}
+
+.smile-symbol {
+    font-size: 32px;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
