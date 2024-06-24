@@ -50,11 +50,11 @@ export function SmileVoting(props) {
     }
 
     const clearResults = () => {
-        const clearResult = initialSmiles.map((smile) =>
-            ({...smile, votes: 0})
-        );
+        // const clearResult = initialSmiles.map((smile) =>
+        //     ({...smile, votes: 0})
+        // );
 
-        setSmiles(clearResult);
+        setSmiles(initialSmiles);
         setWinner(null);
         localStorage.removeItem("smileVotes");
     }
