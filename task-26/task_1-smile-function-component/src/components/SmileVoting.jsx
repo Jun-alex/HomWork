@@ -4,14 +4,16 @@ import {Smile} from "./Smile.jsx";
 import {Button} from "./Button.jsx";
 import {Result} from "./Result.jsx";
 
+
+const initialSmiles = [
+    {id: 1, symbol: "🙆", votes: 0},
+    {id: 2, symbol: "🤯", votes: 0},
+    {id: 3, symbol: "🤦‍♂️", votes: 0},
+    {id: 4, symbol: "😳", votes: 0},
+    {id: 5, symbol: "🤷‍♂️", votes: 0},
+];
+
 export function SmileVoting(props) {
-    const initialSmiles = [
-        {id: 1, symbol: "🙆", votes: 0},
-        {id: 2, symbol: "🤯", votes: 0},
-        {id: 3, symbol: "🤦‍♂️", votes: 0},
-        {id: 4, symbol: "😳", votes: 0},
-        {id: 5, symbol: "🤷‍♂️", votes: 0},
-    ];
 
     const [smiles, setSmiles] = useState(initialSmiles);
     const [winner, setWinner] = useState(null);
