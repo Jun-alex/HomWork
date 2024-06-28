@@ -39,14 +39,15 @@ export function TodoList() {
         <div className="container">
             <h1>ToDo Список</h1>
 
-            <form className="form js--form" onClick={addTodo}>
+            <form className = "form js--form" onClick={addTodo}>
                 <input
-                    className="form__input js--form__input"
+                    className = "form__input js--form__input"
                     name="value"
                     required
-                    type="text"
-                    value={inputValue}
-                    onChange={(event) => setInputValue(event.target.value)}
+                    autoComplete = "off"
+                    type = "text"
+                    value = {inputValue}
+                    onChange = {(event) => setInputValue(event.target.value)}
                 />
 
                 <button className="form__btn">Добавить</button>

@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 
-export function Header() {
+export function Header(props) {
+    const { darkMode, toggleDarkMode } = props;
 
     return (
         <header>

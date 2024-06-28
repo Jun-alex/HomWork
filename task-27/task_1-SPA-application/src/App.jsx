@@ -13,10 +13,13 @@ export function App() {
         document.body.className = darkMode ? "dark-mode" : "light-mode";
     }, [darkMode]);
 
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+    };
 
     return (
         <ErrorBoundary>
-            <Header/>
+            <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
             <button className="theme-btn" onClick={() => setDarkMode(!darkMode)}>
                 {darkMode ? "Светлая тема" : "Тёмная Тема"}
             </button>
