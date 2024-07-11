@@ -1,0 +1,35 @@
+body {
+    background-color: #808080b5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header, .footer {
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #0be69d;
+}
+
+.btn-clear {
+    background-color: #c0b418f5;
+    color: white;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
