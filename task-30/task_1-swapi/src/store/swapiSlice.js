@@ -1,17 +1,16 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 export const fetchSwapi = createAsyncThunk(
     "swapi/fetchSwapi",
     async (url) => {
         const response = await fetch(`https://swapi.dev/api/${url}`);
         const data = await response.json();
-        // console.log('Fetched data:', data);
         return data;
     }
 );
 
 const initialState = {
-    data: [],
+    data: null,
     loading: false,
 };
 
@@ -32,7 +31,6 @@ const swapiSlice = createSlice({
             .addCase(fetchSwapi.fulfilled, (state, action) => { // added action
                 state.loading = false;
                 state.data = action.payload;
-                // console.log('Updated state data:', state.data);
             })
             .addCase(fetchSwapi.rejected, (state) => {
                 state.loading = false;
@@ -40,7 +38,7 @@ const swapiSlice = createSlice({
     }
 });
 
-export const { clearData } = swapiSlice.actions;
+export const { clearData} = swapiSlice.actions;
 
 export default swapiSlice.reducer;
 
