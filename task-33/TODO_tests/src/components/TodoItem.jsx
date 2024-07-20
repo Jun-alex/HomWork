@@ -27,14 +27,16 @@ export function TodoItem({ text, completed, index }) {
                     <input
                         type="checkbox"
                         checked={completed}
-                        onChange={() => dispatch(toggleTodo(index))}
+                        onChange={() =>
+                            // console.log("Checkbox нажат:", !completed);
+                            dispatch(toggleTodo(index))}
                     />
                     <span onClick={() => dispatch(toggleTodo(index))}>{text}</span>
                 </div>
             )}
             <button onClick={() => dispatch(removeTodo(index))}>Удалить</button>
-            <button onClick={handleItem}>{isEditing ? "Сохранить" : "Редактировать"}</button>
+            <button onClick={ handleItem }>{isEditing ? "Сохранить" : "Редактировать"}</button>
         </div>
-    )
+    );
 }
 
