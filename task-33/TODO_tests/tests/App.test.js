@@ -1,19 +1,22 @@
 import React from 'react';
-import { Provider } from "react-redux";
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { App } from "../src/App";
+import { Provider } from "react-redux";
 import store from "../src/store/store";
+import { App } from "../src/App";
 
-test('Страница имеет заголовок TODO', () => {
-    render(
+const renderWithProvider = (component) => {
+    return render(
         <Provider store={store}>
-            <App />
+            {component}
         </Provider>
     );
+};
 
-    const headingElement = screen.getAllByText(/TODO/i);
+test('Страница имеет заголовок TODO', () => {
+    renderWithProvider(<App />);
 
-    expect(headingElement[0]).toBeInTheDocument();
+    const headingElements = screen.getAllByText(/TODO/i);
+    expect(headingElements[0]).toBeInTheDocument();
 });
 
