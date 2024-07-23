@@ -1,25 +1,22 @@
-import React from 'react';
-import { fireEvent, render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
-import store from "../src/store/store";
-import { TodoList } from "../src/components/TodoList";
-import { TodoInput } from "../src/components/TodoInput";
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom'
+import { App } from '../src/App';
 
-test("Hовый элемент после ввода текста и клика 'Добавить'", () => {
-    render(
-        <Provider store={store}>
-            <TodoInput />
-            <TodoList />
-        </Provider>
-    );
+test("Hовый элемент после ввода текста и клика 'Добавить'", async () => {
+    const { container } = render(<App />);
 
-    const elementInput  = screen.getByRole("textbox");
+    const loadingText = screen.getByText("Loading...");
+    expect(loadingText).toBeInTheDocument();
+
+    await waitFor(() => expect(screen.getByText("Забрать машину")).toBeInTheDocument(), {
+        timeout: 2000,
+    });
+
+    const elementInput = container.querySelector('input');
     const addBtn = screen.getByText(/Добавить/i);
 
-    fireEvent.change(elementInput , {target: {value: "Новый Todo"}});
+    fireEvent.change(elementInput, { target: { value: 'Новый Todo' } });
     fireEvent.click(addBtn);
 
-    const newTodo = screen.getByText("Новый Todo");
-    expect(newTodo).toBeInTheDocument();
+    expect(screen.getByText('Новый Todo')).toBeInTheDocument()
 });
-

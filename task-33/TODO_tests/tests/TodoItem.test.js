@@ -1,26 +1,28 @@
-import React from 'react';
-import store from "../src/store/store";
-import {addTodo} from "../src/store/todosStore";
-import {fireEvent, render, screen} from "@testing-library/react";
-import {Provider} from "react-redux";
-import {TodoItem} from "../src/components/TodoItem";
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import { App } from '../src/App';
 
-test("Cостояние компонента TodoItem", () => {
-    const todo = {text: "Забрать машину", completed: false};
-    store.dispatch(addTodo(todo.text));
+test("Состояние компонента TodoItem через App", async () => {
+    const { container } = render(<App />);
 
-    render(
-        <Provider store={store}>
-            <TodoItem text={todo.text} completed={todo.completed} index={0}/>
-        </Provider>
-    );
+    await waitFor(() => {
+        const loadingText = screen.queryByText("Loading...");
+        expect(loadingText).not.toBeInTheDocument();
+    }, {timeout: 2000});
 
-    const textTodo = screen.getByText(todo.text);
-    expect(textTodo).toBeInTheDocument();
+    const elementInput = container.querySelector('input');
+    const addBtn = screen.getByText(/Добавить/i);
+
+    fireEvent.change(elementInput, { target: { value: 'Забрать машину' } });
+    fireEvent.click(addBtn);
+
+    const textTodoItems = await waitFor(() => screen.getAllByText('Забрать машину'));
+
+    expect(textTodoItems.length).toBe(1);
+    expect(textTodoItems[0]).toBeInTheDocument();
 
     const checkbox = screen.getByRole("checkbox");
     fireEvent.click(checkbox);
 
     expect(checkbox.checked).toBe(true);
 });
-
