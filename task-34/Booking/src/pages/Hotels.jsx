@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Box, Typography, Card, CardContent, Grid } from '@mui/material';
-import { FETCH_HOTELS_REQUEST } from '../redux/actions/actions.js';
-import {useNavigate} from "react-router-dom";
+import { fetchHotelsRequest } from '../redux/actions/actions.js';
+import { useNavigate } from 'react-router-dom';
 
 const Hotels = () => {
   const dispatch = useDispatch();
@@ -10,15 +10,15 @@ const Hotels = () => {
   const hotels = useSelector((state) => state.hotels);
   const loading = useSelector((state) => state.loading);
   const error = useSelector((state) => state.error);
-  const destination = useSelector((state) => state.destination);
+  const submitStatus = useSelector((state) => state.submitStatus);
 
   useEffect(() => {
-    if (!destination) {
-      navigate('/');
+    if (submitStatus === 'success') {
+      dispatch(fetchHotelsRequest());
     } else {
-      dispatch(fetchHotels());
+      navigate('/');
     }
-  }, [dispatch, navigate, destination]);
+  }, [dispatch, navigate, submitStatus]);
 
   return (
     <Box sx={{ padding: '20px' }}>

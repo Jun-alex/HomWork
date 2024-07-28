@@ -1,17 +1,15 @@
-import {Wrapper} from "./components.jsx";
-import {Logo} from "../Logo/index.jsx";
-import {Stack} from "@mui/material";
-import {Button} from "../Button/index.jsx";
-import {route} from "../../redux/api/route.jsx";
+import React from 'react';
+import { Button } from "../Button/index.jsx";
+import { Box, Typography } from '@mui/material';
 
 export function Header() {
   return (
-    <Wrapper component="header">
-      <Logo />
-      <Stack spacing={2} direction="row">
-        <Button reactHref={route.main.path}>Main</Button>
-        <Button reactHref={route.about.path}>About</Button>
-      </Stack>
-    </Wrapper>
-  )
+    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px', borderBottom: '1px solid #ddd' }}>
+      <Typography variant="h4">Booking</Typography>
+      <Box>
+        <Button reactHref="/" color="#fff" sx={{ marginRight: '10px' }}>Main</Button>
+        <Button reactHref="/about" color="#fff">About</Button>
+      </Box>
+    </Box>
+  );
 }

@@ -3,6 +3,9 @@ import {
   FETCH_HOTELS_FAILURE,
   FETCH_HOTELS_REQUEST,
   FETCH_HOTELS_SUCCESS,
+  SET_DESTINATIONS,
+  SUBMIT_DESTINATION_SUCCESS,
+  SUBMIT_DESTINATION_FAILURE
 } from "../actions/actions.js";
 
 const hotelsReducer = (state = [], action) => {
@@ -26,9 +29,32 @@ const loadingReducer = (state = false, action) => {
   }
 };
 
+const destinationReducer = (state = [], action) => {
+  switch (action.type) {
+    case SET_DESTINATIONS:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+
+const submitStatusReducer = (state = null, action) => {
+  switch (action.type) {
+    case SUBMIT_DESTINATION_SUCCESS:
+      return 'success';
+    case SUBMIT_DESTINATION_FAILURE:
+      return 'failure';
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
   hotels: hotelsReducer,
-  loading: loadingReducer
+  loading: loadingReducer,
+  destination: destinationReducer,
+  submitStatus: submitStatusReducer
 });
 
 export default rootReducer;
