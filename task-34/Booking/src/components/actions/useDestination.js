@@ -7,11 +7,11 @@ export function useDestination() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const submitStatus = useSelector(state => state.submitStatus);
-  const items = useSelector(state => state.destination); // Убедитесь, что вы получаете данные
-  const loading = useSelector(state => state.loading); // Убедитесь, что вы отслеживаете загрузку данных
+  const items = useSelector(state => state.destination);
+  const loading = useSelector(state => state.loading);
 
   useEffect(() => {
-    dispatch(fetchDestinations()); // Загрузка данных при монтировании
+    dispatch(fetchDestinations());
   }, [dispatch]);
 
   const handleSubmit = (values) => {

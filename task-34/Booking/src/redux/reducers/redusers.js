@@ -6,7 +6,7 @@ import {
   SET_DESTINATIONS,
   SUBMIT_DESTINATION_SUCCESS,
   SUBMIT_DESTINATION_FAILURE
-} from "../actions/actions.js";
+} from "../../components/actions/actions.js";
 
 const hotelsReducer = (state = [], action) => {
   switch (action.type) {

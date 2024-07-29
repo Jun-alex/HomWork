@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Box, Typography, Card, CardContent, Grid } from '@mui/material';
-import { fetchHotelsRequest } from '../redux/actions/actions.js';
+import { fetchHotelsRequest } from '../components/actions/actions.js';
 import { useNavigate } from 'react-router-dom';
 
 const Hotels = () => {

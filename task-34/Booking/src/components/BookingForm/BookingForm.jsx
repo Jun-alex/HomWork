@@ -4,7 +4,7 @@ import {Button} from "../Button/index.jsx";
 import Select from "../Select.jsx";
 import {Input} from "../Input.jsx";
 import DatePicker from "../DatePicker.jsx";
-import {useDestination} from "../../redux/actions/useDestination.js";
+import {useDestination} from "../actions/useDestination.js";
 
 const validate = {
   required: value => (value ? undefined : 'Required'),

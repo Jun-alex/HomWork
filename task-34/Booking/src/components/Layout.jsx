@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom';
 import { Header } from './Header';
 import { ThemeProvider, createTheme, CssBaseline, Container } from '@mui/material';
 import { orange } from '@mui/material/colors';
-import store from '../redux/store.js';
 
 const theme = createTheme({
   palette: {

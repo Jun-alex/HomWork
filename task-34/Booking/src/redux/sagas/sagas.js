@@ -9,7 +9,7 @@ import {
   SUBMIT_DESTINATION,
   SUBMIT_DESTINATION_SUCCESS,
   SUBMIT_DESTINATION_FAILURE
-} from '../actions/actions.js';
+} from '../../components/actions/actions.js';
 
 function* fetchDestinations() {
   try {
