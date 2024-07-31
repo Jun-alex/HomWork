@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 import {
   FETCH_HOTELS_FAILURE,
   FETCH_HOTELS_REQUEST,
@@ -6,7 +6,8 @@ import {
   SET_DESTINATIONS,
   SUBMIT_DESTINATION_SUCCESS,
   SUBMIT_DESTINATION_FAILURE
-} from "../../components/actions/actions.js";
+} from "../actions/actions";
+import formReducer from "../slices/formSlice.js";
 
 const hotelsReducer = (state = [], action) => {
   switch (action.type) {
@@ -38,13 +39,12 @@ const destinationReducer = (state = [], action) => {
   }
 };
 
-
 const submitStatusReducer = (state = null, action) => {
   switch (action.type) {
     case SUBMIT_DESTINATION_SUCCESS:
-      return 'success';
+      return "success";
     case SUBMIT_DESTINATION_FAILURE:
-      return 'failure';
+      return "failure";
     default:
       return state;
   }
@@ -54,7 +54,8 @@ const rootReducer = combineReducers({
   hotels: hotelsReducer,
   loading: loadingReducer,
   destination: destinationReducer,
-  submitStatus: submitStatusReducer
+  submitStatus: submitStatusReducer,
+  form: formReducer,
 });
 
 export default rootReducer;

@@ -1,11 +1,32 @@
-import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import rootReducer from "./reducers/redusers.js";
-import rootSaga from "./sagas/sagas.js";
+import { configureStore } from "@reduxjs/toolkit";
+import createSagaMiddleware from "redux-saga";
+import { createReduxHistoryContext } from "redux-first-history";
+import destinationReducer from "./slices/destinationSlice";
+import hotelsReducer from "./slices/hotelsSlice";
+import rootSaga from "./sagas/indexSagas.js";
+import { createBrowserHistory } from "history";
+import formReducer from "./slices/formSlice.js";
+
+const { routerReducer, routerMiddleware, createReduxHistory } = createReduxHistoryContext({
+  history: createBrowserHistory()
+});
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
+export const store = configureStore({
+  reducer: {
+    router: routerReducer,
+    destination: destinationReducer,
+    hotels: hotelsReducer,
+    form: formReducer,
+  },
+  middleware: (getDefaultMiddleware) => [
+    ...getDefaultMiddleware(),
+    sagaMiddleware,
+    routerMiddleware
+  ]
+});
 
 sagaMiddleware.run(rootSaga);
 
-export default store;
+export const history = createReduxHistory(store);
